@@ -1,5 +1,6 @@
 import flet as ft
 from ..funcs.music import play_music
+from ..variables import Variables
 
 class appbar(ft.AppBar):
     def __init__(self, audioplayer):
@@ -10,6 +11,6 @@ class appbar(ft.AppBar):
         self.title_text_style = ft.TextStyle(font_family="Google Sans", size=20, weight=ft.FontWeight.W_400)
         self.actions = [
             ft.IconButton(icon=ft.icons.PLAY_CIRCLE_OUTLINED, tooltip="Force play audio", on_click=lambda _: play_music(audioplayer)),
-            ft.IconButton(icon=ft.icons.RESTART_ALT, tooltip="Reset Lyrics")
+            ft.IconButton(icon=ft.icons.RESTART_ALT, tooltip="Reset Lyrics", on_click=lambda _: print(Variables.current_lyrics_list))
 
         ]

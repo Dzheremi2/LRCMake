@@ -14,15 +14,11 @@ now_playing = None
 def main(page: ft.Page):
     #App Theming
     page.title = "LRCMake"
-    page.scroll = ft.ScrollMode.AUTO
+    page.scroll = ft.ScrollMode.ALWAYS
     page.theme = page.dark_theme = ft.Theme(use_material3=True, color_scheme_seed="green")
     page.fonts = {
         "Google Sans": "https://raw.githubusercontent.com/hprobotic/Google-Sans-Font/master/GoogleSans-Regular.ttf",
     }
-
-# TODO: Logic based on string splitting
-    def report_inside(args):
-        print((lyricField.value).splitlines())
 
     #Building interface
     file_picker = ft.FilePicker(on_result=lambda e: (change_src(audioplayer, page, songFile=e.files[0].path), update_track_info(get_track_info(songFile=e.files[0].path, now_playing=now_playing), page), slider_init(page, get_duration(e.files[0].path))))
@@ -33,6 +29,6 @@ def main(page: ft.Page):
     page.add(appbar(audioplayer))
     page.add(playerBlock(now_playing, file_picker, audioplayer, page))
     page.add(lyricField())
-    page.add(syncModeFAB(page, 20))
+    page.add(syncModeFAB(page, 0, audioplayer))
 
 ft.app(target=main, assets_dir="assets")
