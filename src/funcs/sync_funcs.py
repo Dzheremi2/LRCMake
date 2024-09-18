@@ -11,4 +11,5 @@ def make_line(string, page):
     Variables.current_lyrics_list[Variables.current_sync_row] = string + Variables.current_lyrics_list[Variables.current_sync_row]
     page.controls[2].controls[Variables.current_sync_row].controls[0].controls[0].controls[0].value = string + page.controls[2].controls[Variables.current_sync_row].controls[0].controls[0].controls[0].value
     page.controls[2].controls[Variables.current_sync_row+1].controls[0].controls[0].controls[0].focus()
+    page.controls[2].scroll_to(key=page.controls[2].controls[Variables.current_sync_row+1].key)
     page.update()

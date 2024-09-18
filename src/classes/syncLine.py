@@ -9,6 +9,7 @@ class syncLine(ft.Column):
             ft.Row(
                 controls= [
                     ft.TextField(
+                        read_only = True,
                         multiline=False,
                         border_color=ft.colors.SECONDARY, 
                         label=f"{i}",
