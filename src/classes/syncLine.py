@@ -15,18 +15,10 @@ class syncLine(ft.Column):
                         border_color=ft.colors.SECONDARY, 
                         label=f"{i}",
                         value=string,
-                        on_focus=lambda e: get_current_sync_row(int(e.control.label))
-                    ),
-                    ft.IconButton(
-                        icon=ft.icons.FAST_REWIND_ROUNDED,
-                        bgcolor=ft.colors.PRIMARY_CONTAINER,
-                        style=ft.ButtonStyle(visual_density=ft.VisualDensity.COMPACT)
-                    ),
-                    ft.IconButton(
-                        icon=ft.icons.FAST_FORWARD_ROUNDED,
-                        bgcolor=ft.colors.PRIMARY_CONTAINER,
-                        style=ft.ButtonStyle(visual_density=ft.VisualDensity.COMPACT)
+                        on_focus=lambda e: get_current_sync_row(int(e.control.label)),
+                        expand=True
                     )
                 ]
             )
         ]
+        self.expand=True

@@ -10,7 +10,6 @@ def sync_interface(page, lines_cnt, audioplayer):
     for i in range(lines_cnt):
         string = split_text_on_lines(page)[i]
         lines_column.controls.append(ft.Row(controls=[syncLine(i, string)], key=i))
-    print(lines_column.controls[3].key)
     page.remove_at(2)
     page.remove_at(2)
     page.insert(2, lines_column)

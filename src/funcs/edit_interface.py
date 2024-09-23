@@ -4,7 +4,7 @@ from ..classes.lyricField import lyricField
 def edit_interface(page, lines_cnt, audioplayer):
     from ..classes.syncModeFAB import syncModeFAB
     page.remove_at(2)
-    page.remove_at(2)
+    page.remove_at(3)
     page.controls[0].actions.pop(2)
     page.controls[0].actions.pop(2)
     page.insert(2, lyricField())

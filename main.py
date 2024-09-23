@@ -3,6 +3,7 @@ from src.classes.appbar import appbar
 from src.classes.lyricField import lyricField
 from src.classes.playerBlock import playerBlock
 from src.classes.syncModeFAB import syncModeFAB
+from src.classes.bottomControls import bottomControls
 from src.funcs.music import change_src, get_track_info, update_track_info, get_duration
 from src.funcs.play_pause import update_state_pause
 from src.funcs.slider_postion import update_slider, slider_init
@@ -31,5 +32,6 @@ def main(page: ft.Page):
     page.add(playerBlock(now_playing, file_picker, audioplayer, page))
     page.add(lyricField())
     page.add(syncModeFAB(page, 0, audioplayer))
+    page.insert(4, bottomControls(page, audioplayer))
 
 ft.app(target=main, assets_dir="assets")
