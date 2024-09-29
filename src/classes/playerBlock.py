@@ -3,7 +3,7 @@ from ..funcs.music import play_music, seek_to
 from ..funcs.play_pause import update_state_pause
 
 class playerBlock(ft.Row):
-    def __init__(self, now_playing, file_picker, audioplayer, page):
+    def __init__(self, now_playing, file_picker, audioplayer, page, permissions):
         super().__init__()
 
         self.controls = [
@@ -14,7 +14,7 @@ class playerBlock(ft.Row):
                         title=ft.Text(f"{'Select file' if now_playing == None else now_playing['artist']}", font_family="Google Sans", size=17),
                         subtitle=ft.Text(f"{'Click' if now_playing == None else now_playing['track']}", font_family="Google Sans"),
                         trailing=ft.IconButton(icon=ft.icons.PLAY_ARROW_ROUNDED, bgcolor=ft.colors.PRIMARY_CONTAINER, tooltip="Play/Pause", on_click=lambda _: (play_music(audioplayer), update_state_pause(page, audioplayer))),
-                        on_click=lambda _: file_picker.pick_files(allow_multiple=False, file_type=ft.FilePickerFileType.AUDIO)
+                        on_click=lambda _: (file_picker.pick_files(allow_multiple=False, file_type=ft.FilePickerFileType.AUDIO), permissions.request_permission(ft.PermissionType.AUDIO), permissions.request_permission(ft.PermissionType.ACCESS_MEDIA_LOCATION), permissions.request_permission(ft.PermissionType.STORAGE))
                     ),
                     ft.Row(
                         controls= [

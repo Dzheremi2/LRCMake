@@ -8,4 +8,9 @@ def parser(page):
 
 def get_ms(page):
     # Return refined string (in ms)
-    return int(parser(page).replace(":", "").replace(".", ""))
+    pattern = r"(\d+):(\d+).(\d+)"
+    mm, ss, ms = re.search(pattern, parser(page)).groups()
+    print(mm, ss, ms)
+    total_ss = int(mm) * 60 + int(ss)
+    total_ms = total_ss * 1000 + int(ms)
+    return total_ms
