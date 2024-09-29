@@ -39,8 +39,11 @@ def get_duration(songFile):
 def update_track_info(now_playing, page):
     page.controls[1].controls[0].controls[0].title.value = now_playing['track']
     page.controls[1].controls[0].controls[0].subtitle.value = now_playing['artist']
-    page.controls[1].controls[0].controls[1].controls[0].value = f"{now_playing['duration'] // 60000:02d}:{(now_playing['duration'] % 60000) // 1000:02d}"
+    page.controls[1].controls[0].controls[1].controls[0].controls[0].value = f"{now_playing['duration'] // 60000:02d}:{(now_playing['duration'] % 60000) // 1000:02d}"
     page.update()
+
+def update_current_timing_frontend(page, timing):
+    page.controls[1].controls[0].controls[1].controls[0].controls[1].value = f"{timing // 60000:02d}:{(timing % 60000) // 1000:02d}"
 
 def replay_line(page, audioplayer):
     timing = get_ms(page)

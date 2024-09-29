@@ -43,3 +43,7 @@ def forw_100_ms(page, audioplayer):
     page.controls[2].controls[Variables.current_sync_row].controls[0].controls[0].controls[0].value = re.sub(pattern, replacement, page.controls[2].controls[Variables.current_sync_row].controls[0].controls[0].controls[0].value)
     seek_to_ms(audioplayer, timing)
     print(f"seeked to {new_prefix}")
+
+def reset_lyrics(page):
+    page.controls[2].value = ''
+    page.update()

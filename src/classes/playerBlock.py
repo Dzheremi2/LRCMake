@@ -18,10 +18,22 @@ class playerBlock(ft.Row):
                     ),
                     ft.Row(
                         controls= [
-                            ft.Text(
-                                f"{'00:00' if now_playing == None else now_playing['duration']}",
-                                font_family="Google Sans",
-                                size=17
+                            ft.Column(
+                            controls = [
+                                    ft.Text(
+                                        f"{'00:00' if now_playing == None else now_playing['duration']}",
+                                        font_family="Google Sans",
+                                        size=17
+                                    ),
+                                    ft.Text(
+                                        "00:00",
+                                        font_family="Google Sans",
+                                        size=12,
+                                        color="#A9A9A9"
+                                    )
+                                ],
+                            alignment=ft.MainAxisAlignment.START,
+                            spacing=0
                             ),
                             ft.Container(
                                 content=ft.Slider(
