@@ -48,4 +48,4 @@ def update_current_timing_frontend(page, timing):
 def replay_line(page, audioplayer):
     timing = get_ms(page)
     seek_to_ms(audioplayer, timing)
-    print(f"Seeked to: {timing // 60000:02d}:{(timing % 60000) // 1000:02d}.{timing // 1000:03d}") # Seeked to: mm:ss.ms
+    print(f"Seeked to: {timing // 60000:02d}:{(timing % 60000) // 1000:02d}.{timing % 1000:03d}") # Seeked to: mm:ss.ms

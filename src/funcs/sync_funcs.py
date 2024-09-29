@@ -11,14 +11,23 @@ def get_current_sync_row(id):
     Variables.current_sync_row = id
 
 def make_line(string, page):
-    Variables.current_lyrics_list[Variables.current_sync_row] = string + Variables.current_lyrics_list[Variables.current_sync_row]
-    page.controls[2].controls[Variables.current_sync_row].controls[0].controls[0].controls[0].value = string + page.controls[2].controls[Variables.current_sync_row].controls[0].controls[0].controls[0].value
-    try:
-        page.controls[2].controls[Variables.current_sync_row+1].controls[0].controls[0].controls[0].focus()
-        page.controls[2].scroll_to(key=page.controls[2].controls[Variables.current_sync_row+1].key)
-    except IndexError:
-        pass
-    page.update()
+    pattern = r'\[([^\[\]]+)\] '
+    if re.search(pattern, page.controls[2].controls[Variables.current_sync_row].controls[0].controls[0].controls[0].value) == None:
+        Variables.current_lyrics_list[Variables.current_sync_row] = string + Variables.current_lyrics_list[Variables.current_sync_row]
+        page.controls[2].controls[Variables.current_sync_row].controls[0].controls[0].controls[0].value = string + page.controls[2].controls[Variables.current_sync_row].controls[0].controls[0].controls[0].value
+        try:
+            page.controls[2].controls[Variables.current_sync_row+1].controls[0].controls[0].controls[0].focus()
+        except IndexError:
+            pass
+        page.update()
+    else:
+        replacement = fr'{string}'
+        page.controls[2].controls[Variables.current_sync_row].controls[0].controls[0].controls[0].value = re.sub(pattern, replacement, page.controls[2].controls[Variables.current_sync_row].controls[0].controls[0].controls[0].value)
+        try:
+            page.controls[2].controls[Variables.current_sync_row+1].controls[0].controls[0].controls[0].focus()
+        except IndexError:
+            pass
+        page.update()
 
 def rew_100_ms(page, audioplayer):
     pattern = r'\[([^\[\]]+)\]'
