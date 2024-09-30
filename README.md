@@ -7,16 +7,15 @@
 LRCMake is the app written in python using [Flet](https://github.com/flet-dev/flet) framework.
 LRCMake is used for syncing lyrics for future contributing it to various resources, especially [LRCLIB](https://lrclib.net), or just for your local files, if you prefer to store it locally.
 
-Right now LRCMake support only exporting synced lyrics to clipboard, but it's not forever. In my plans is to enlarge export options to `.lrc` files and to direct uploading synced lyrics to [LRCLIB](https://lrclib.net/docs), so stay tuned.
+Right now LRCMake support only exporting synced lyrics to clipboard, but it's not forever. In my plans is to enlarge export option to direct uploading synced lyrics to [LRCLIB](https://lrclib.net/docs), so stay tuned.
 
 ## Installation
 
 Despite the fact that LRCMake is the app, it currently doesn't have `.apk` file...
 
-Just because when I compile it, it's just a blank screen.
-If you can compile it without blank screen, contact me through PR, Issue or Discussion
+Because Flet's `FilePicker` doesn't return correct file path on mobile which causing that metadata reader does not work. There is no `.apk` file until I know how to solve this issue. 
 
-The only way I know how to launch it is [Flet's app](https://play.google.com/store/apps/details?id=com.appveyor.flet) using [Termux](https://f-droid.org/ru/packages/com.termux/), so this instruction is for Termux and Flet's app.
+The only way I know how to launch it with working metadata is [Flet's app](https://play.google.com/store/apps/details?id=com.appveyor.flet) using [Termux](https://f-droid.org/ru/packages/com.termux/), so this instruction is for Termux and Flet's app.
 >[!CAUTION]
 >This method requires root, if you want to see songs metadata
 
