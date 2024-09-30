@@ -13,5 +13,5 @@ def publish_page(page, drawer):
     page.overlay.append(file_picker)
     page.add(pbAppbar(page, drawer))
     page.add(dataBlock(data, file_picker))
-    page.add(lyricsTabs())
+    page.add(lyricsTabs(page))
     page.update()
