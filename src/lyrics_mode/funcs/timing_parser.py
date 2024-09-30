@@ -1,5 +1,5 @@
 import re
-from ..variables import Variables
+from ...variables import Variables
 
 def parser(page):
     # Returns unrefined string

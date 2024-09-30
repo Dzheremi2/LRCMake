@@ -1,13 +1,13 @@
 import flet as ft
-from src.classes.appbar import appbar
-from src.classes.lyricField import lyricField
-from src.classes.playerBlock import playerBlock
-from src.classes.syncModeFAB import syncModeFAB
-from src.classes.bottomControls import bottomControls
-from src.classes.sideMenu import menu
-from src.funcs.music import change_src, get_track_info, update_track_info, get_duration, update_current_timing_frontend
-from src.funcs.play_pause import update_state_pause
-from src.funcs.slider_postion import update_slider, slider_init
+from src.lyrics_mode.classes.appbar import appbar
+from src.lyrics_mode.classes.lyricField import lyricField
+from src.lyrics_mode.classes.playerBlock import playerBlock
+from src.lyrics_mode.classes.syncModeFAB import syncModeFAB
+from src.lyrics_mode.classes.bottomControls import bottomControls
+from src.lyrics_mode.classes.sideMenu import menu
+from src.lyrics_mode.funcs.music import change_src, get_track_info, update_track_info, get_duration, update_current_timing_frontend
+from src.lyrics_mode.funcs.play_pause import update_state_pause
+from src.lyrics_mode.funcs.slider_postion import update_slider, slider_init
 
 # Main Music Variable Init
 now_playing = None

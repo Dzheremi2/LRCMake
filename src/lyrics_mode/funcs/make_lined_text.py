@@ -1,5 +1,4 @@
-import flet as ft
-from ..variables import Variables
+from ...variables import Variables
 
 def split_text_on_lines(page):
     list = ((page.controls[2].value).splitlines())

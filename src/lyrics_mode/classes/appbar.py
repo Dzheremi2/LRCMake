@@ -1,7 +1,7 @@
 import flet as ft
 from ..funcs.music import play_music
 from ..funcs.sync_funcs import reset_lyrics
-from ..variables import Variables
+from ...variables import Variables
 
 class appbar(ft.AppBar):
     def __init__(self, audioplayer, page, drawer):

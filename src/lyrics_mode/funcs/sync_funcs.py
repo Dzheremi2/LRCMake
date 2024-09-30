@@ -1,5 +1,5 @@
 import re
-from ..variables import Variables
+from ...variables import Variables
 from .timing_parser import get_ms
 from .music import seek_to_ms
 
