@@ -4,6 +4,7 @@ from src.classes.lyricField import lyricField
 from src.classes.playerBlock import playerBlock
 from src.classes.syncModeFAB import syncModeFAB
 from src.classes.bottomControls import bottomControls
+from src.classes.sideMenu import menu
 from src.funcs.music import change_src, get_track_info, update_track_info, get_duration, update_current_timing_frontend
 from src.funcs.play_pause import update_state_pause
 from src.funcs.slider_postion import update_slider, slider_init
@@ -25,12 +26,13 @@ def main(page: ft.Page):
     permissions = ft.PermissionHandler()
     file_picker = ft.FilePicker(on_result=lambda e: (change_src(audioplayer, page, songFile=e.files[0].path), update_track_info(get_track_info(songFile=e.files[0].path, now_playing=now_playing), page), slider_init(page, get_duration(e.files[0].path))))
     audioplayer = ft.Audio(on_position_changed=lambda e: (update_slider(page, value=e.position), update_current_timing_frontend(page, timing=e.position)), src="Silence.ogg", volume=0.5, on_duration_changed=lambda e: print(e.data), on_loaded=lambda _: update_state_pause(page, audioplayer))
+    drawer = menu()
     page.overlay.append(audioplayer)
     page.overlay.append(file_picker)
     page.overlay.append(permissions)
     page.update()
     # Building interface
-    page.add(appbar(audioplayer, page))
+    page.add(appbar(audioplayer, page, drawer))
     page.add(playerBlock(now_playing, file_picker, audioplayer, page, permissions))
     page.add(lyricField())
     page.add(syncModeFAB(page, 0, audioplayer))

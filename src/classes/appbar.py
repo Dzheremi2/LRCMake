@@ -4,7 +4,7 @@ from ..funcs.sync_funcs import reset_lyrics
 from ..variables import Variables
 
 class appbar(ft.AppBar):
-    def __init__(self, audioplayer, page):
+    def __init__(self, audioplayer, page, drawer):
         super().__init__()
 
         self.title = ft.Text("LRCMake")
@@ -15,3 +15,4 @@ class appbar(ft.AppBar):
             ft.IconButton(icon=ft.icons.RESTART_ALT, tooltip="Reset Lyrics", on_click=lambda _: reset_lyrics(page))
 
         ]
+        self.leading = ft.IconButton(icon=ft.icons.MENU_ROUNDED, tooltip="Open menu", on_click= lambda _: page.open(drawer))
