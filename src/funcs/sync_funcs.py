@@ -12,6 +12,7 @@ def get_current_sync_row(id):
 
 def make_line(string, page):
     pattern = r'\[([^\[\]]+)\] '
+    # Checks if line is already synced and if it is, changing timestamp to new value
     if re.search(pattern, page.controls[2].controls[Variables.current_sync_row].controls[0].controls[0].controls[0].value) == None:
         Variables.current_lyrics_list[Variables.current_sync_row] = string + Variables.current_lyrics_list[Variables.current_sync_row]
         page.controls[2].controls[Variables.current_sync_row].controls[0].controls[0].controls[0].value = string + page.controls[2].controls[Variables.current_sync_row].controls[0].controls[0].controls[0].value
@@ -45,6 +46,7 @@ def rew_100_ms(page, audioplayer):
         print(f"seeked to [00:00.000]")
 
 def forw_100_ms(page, audioplayer):
+    # Forwards line's timestamp by 100ms
     pattern = r'\[([^\[\]]+)\]'
     timing = get_ms(page) + 100
     new_prefix = f"{timing // 60000:02d}:{(timing % 60000) // 1000:02d}.{timing % 1000:03d}"

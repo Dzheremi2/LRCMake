@@ -13,10 +13,11 @@ class syncLine(ft.Column):
                         read_only = True,
                         multiline=False,
                         border_color=ft.colors.SECONDARY, 
-                        label=f"{i}",
+                        label=f"Line {i+1}",
                         value=string,
-                        on_focus=lambda e: get_current_sync_row(int(e.control.label)),
-                        expand=True
+                        on_focus=lambda e: get_current_sync_row(int(e.control.key)),
+                        expand=True,
+                        key=i
                     )
                 ]
             )
