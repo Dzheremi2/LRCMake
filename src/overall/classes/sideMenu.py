@@ -1,7 +1,8 @@
 import flet as ft
+from ..funcs.handlers import change_handler
 
 class menu(ft.NavigationDrawer):
-    def __init__(self):
+    def __init__(self, page):
         super().__init__()
 
         self.controls = [
@@ -27,3 +28,4 @@ class menu(ft.NavigationDrawer):
                 selected_icon_content=ft.Icon(ft.icons.ASSIGNMENT_ROUNDED)
             )
         ]
+        self.on_change = lambda e: change_handler(page, self.selected_index, self)
