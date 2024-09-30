@@ -1,7 +1,7 @@
 import flet as ft
 
 class dataBlock(ft.Row):
-    def __init__(self, data):
+    def __init__(self, data, file_picker):
         super().__init__()
 
         self.controls = [
@@ -18,10 +18,11 @@ class dataBlock(ft.Row):
                     alignment=ft.MainAxisAlignment.START,
                     controls=[
                         ft.Text(f"{'00:00' if data == None else data['duration']}", font_family="Google Sans", size=20),
-                        ft.Text(f"{'000' if data == None else data['duration_ms']}", font_family="Google Sans", size=12)
+                        ft.Text(f"{'000' if data == None else data['duration_s']}", font_family="Google Sans", size=12)
                     ],
                     spacing=1
-                )
+                ),
+                on_click=lambda _: file_picker.pick_files(allow_multiple=False, file_type=ft.FilePickerFileType.AUDIO)
             )
         ]
         self.wrap = True
