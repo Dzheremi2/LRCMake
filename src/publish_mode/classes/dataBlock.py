@@ -1,7 +1,8 @@
 import flet as ft
+from ...variables import variables
 
 class dataBlock(ft.Row):
-    def __init__(self, data, file_picker):
+    def __init__(self, file_picker):
         super().__init__()
 
         self.controls = [
@@ -12,13 +13,13 @@ class dataBlock(ft.Row):
                     width=50,
                     height=50
                 ),
-                title=ft.Text(f"{'Select track' if data == None else data['track']}"),
-                subtitle=ft.Text(f"{'Click to select file' if data == None else data['artist']}"),
+                title=ft.Text(f"{'Select track' if variables.metadata == {} else variables.metadata['track']}"),
+                subtitle=ft.Text(f"{'Click to select file' if variables.metadata == {} else variables.metadata['artist']}"),
                 trailing=ft.Column(
                     alignment=ft.MainAxisAlignment.START,
                     controls=[
-                        ft.Text(f"{'00:00' if data == None else data['duration']}", font_family="Google Sans", size=20),
-                        ft.Text(f"{'000' if data == None else data['duration_s']}", font_family="Google Sans", size=12)
+                        ft.Text(f"{'00:00' if variables.metadata == {} else variables.metadata['duration']}", font_family="Google Sans", size=20),
+                        ft.Text(f"{'000' if variables.metadata == {} else variables.metadata['duration_s']}", font_family="Google Sans", size=12)
                     ],
                     spacing=1
                 ),

@@ -7,7 +7,7 @@
 LRCMake is the app written in python using [Flet](https://github.com/flet-dev/flet) framework.
 LRCMake is used for syncing lyrics for future contributing it to various resources, especially [LRCLIB](https://lrclib.net).
 
-Right now LRCMake support only exporting synced lyrics to clipboard, but it's not forever. In my plans is to enlarge export option to direct uploading synced lyrics to [LRCLIB](https://lrclib.net/docs), so stay tuned.
+LRCMake support exporting lyrics to clipboard and direct publishing to [LRCLIB](https://lrclib.net).
 
 ## Installation
 
