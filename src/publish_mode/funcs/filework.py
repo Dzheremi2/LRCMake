@@ -4,7 +4,7 @@ import base64
 from pydub import AudioSegment
 from ...variables import variables
 
-def update_data(data, page, file):
+def update_data(page, file):
     audiofile = eyed3.load(file)
     sound = AudioSegment.from_file(file)
     variables.metadata = {}
@@ -12,7 +12,7 @@ def update_data(data, page, file):
     variables.metadata['track'] = audiofile.tag.title
     variables.metadata['album'] = audiofile.tag.album
     variables.metadata['duration_s'] = len(sound) // 1000
-    variables.metadata['duration'] = f"{variables.metadata['duration_s'] // 60}:{variables.metadata['duration_s'] % 60}"
+    variables.metadata['duration'] = f"{variables.metadata['duration_s'] // 60}:{variables.metadata['duration_s'] % 60:02d}"
     variables.metadata['cover'] = audiofile.tag.images[0].image_data
     page.controls[1].controls[0].title.value = variables.metadata['track']
     page.controls[1].controls[0].subtitle.value = variables.metadata['artist']

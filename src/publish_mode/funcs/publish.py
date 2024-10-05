@@ -36,6 +36,9 @@ def publish(metadata, page):
     challenge_data = requests.post(url="https://lrclib.net/api/request-challenge")
     challenge_data_json = challenge_data.json()
     print(challenge_data_json)
+    page.controls[3].text = None
+    page.controls[3].content = ft.ProgressRing(width=16, height=16, stroke_width=2)
+    page.update()
     nonce = solve_challenge(prefix=challenge_data_json['prefix'], target_hex=challenge_data_json['target'])
     print(f"X-Publish-Token: {challenge_data_json['prefix']}:{nonce}")
     response = requests.post(url="https://lrclib.net/api/publish", headers={"X-Publish-Token": f"{challenge_data_json['prefix']}:{nonce}", "Content-Type": "application/json"}, params={'keep_headers': 'true'}, json={
@@ -53,3 +56,6 @@ def publish(metadata, page):
         page.open(publishAlert(page, "Exit code: 400", "Incorrect public token"))
     else:
         page.open(publishAlert(page, "Exit code: None", "Unknown error occured"))
+    page.controls[3].text = "Publish to LRCLIB"
+    page.controls[3].content = None
+    page.update()
