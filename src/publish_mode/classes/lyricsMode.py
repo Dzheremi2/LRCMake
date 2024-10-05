@@ -29,7 +29,8 @@ class lyricsTabs(ft.Tabs):
                             icon=ft.icons.TEXT_SNIPPET,
                             prefix = ft.IconButton(icon=ft.icons.IMPORT_EXPORT_ROUNDED, tooltip="Import from synced lyrics", on_click=lambda _: make_plain_text(split_text_on_lines(page), page)),
                             multiline=True,
-                            border_color=ft.colors.SECONDARY
+                            border_color=ft.colors.SECONDARY,
+                            on_change=lambda _: save_synced_lyrics_for_publish(page)
                         )
                     ],
                     expand=True
